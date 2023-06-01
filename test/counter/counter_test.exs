@@ -11,11 +11,14 @@ defmodule Counter.CounterTest do
   @tag timeout: 1_000
   test "assert add" do
     pid = Counter.Counter.start(10)
-    send pid, :inc
-    send pid, {self(), :val}
-    receive do
-      {:val, value} ->
-        assert value == 11
+
+    for i <- 11 .. 22 do
+      send pid, :inc
+      send pid, {self, :val}
+      receive do
+        {:val, value} ->
+          assert value == i
+      end
     end
   end
 end
