@@ -1,6 +1,6 @@
 # DistsysElixir
 
-**TODO: Add description**
+This is a project with distributed system tasks written in elixir
 
 ## Installation
 
